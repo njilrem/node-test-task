@@ -8,7 +8,13 @@ import app from '../app.js'
 import Debug from 'debug'
 import http from 'http'
 import { setUpConnection } from '../db/connection.js'
+import conf from 'dotenv'
 const debug = Debug('test-task:server')
+const config = conf.config()
+
+if (config.error) {
+  throw config.error
+}
 
 /**
  * Get port from environment and store in Express.
