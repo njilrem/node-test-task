@@ -3,7 +3,6 @@ import { register, login } from '../controllers/AuthController.js'
 import { updateUser, deleteUser, getUser, getUsers } from '../controllers/UserController.js'
 const router = express.Router()
 
-/* GET users listing. */
 router.get('/', getUsers)
 
 router.post('/register', register)
