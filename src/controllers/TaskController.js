@@ -209,3 +209,20 @@ export const getTasksByStatus = [
     }
   }
 ]
+
+export const getSortedTasksByUsers = [
+  auth,
+  body('sort').isIn(['DESC', 'ASC']).withMessage('Sort must be DESC or ASC'),
+  async (req, res) => {
+    try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        return apiResponse.validationErrorWithData(res, 'Validation Error.', errors.array())
+      }
+      const tasks = await Task.findAll({ order: [['userId', req.body.sort]] })
+      return apiResponse.successResponseWithData(res, 'Tasks sorted by user registration date in ' + req.body.sort + ' order', tasks)
+    } catch (err) {
+
+    }
+  }
+]

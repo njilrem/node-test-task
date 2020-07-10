@@ -412,6 +412,47 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get tasks by user registration date",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0TmFtZSI6IlVzZXIiLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6ImFudG9ua3VjaGVyQGdtYWlvLmNvbSIsImlhdCI6MTU5NDM3MzQ3NSwiZXhwIjoxNTk0MzgwNjc1fQ.39YPLjFIvOi0p_uW31MXygJ3tvd3ybIedGiCX58aWTE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sort\": \"DESC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/tasks/sort",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks",
+								"sort"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
