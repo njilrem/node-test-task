@@ -93,7 +93,7 @@ export const login = [
             bcrypt.compare(req.body.password, user.hash).then(same => {
               if (same) {
                 const userData = {
-                  user_id: user.userId,
+                  userId: user.userId,
                   firstName: user.firstName,
                   lastName: user.lastName,
                   email: user.email

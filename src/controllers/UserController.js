@@ -25,7 +25,7 @@ export const updateUser = [
         return apiResponse.validationErrorWithData(res, 'Validation Error.', errors.array())
       }
       console.log(req.user)
-      const user = await User.findOne({ where: { userId: req.user.user_id } })
+      const user = await User.findOne({ where: { userId: req.user.userId } })
       if (req.body.firstName !== undefined) user.firstName = req.body.firstName
       if (req.body.lastName !== undefined) user.lastName = req.body.lastName
       if (req.body.email !== undefined) user.email = req.body.email
@@ -58,7 +58,7 @@ export const deleteUser = [
     if (!errors.isEmpty()) {
       return apiResponse.validationErrorWithData(res, 'Validation Error.', errors.array())
     }
-    const user = await User.findOne({ where: { userId: req.user.user_id } })
+    const user = await User.findOne({ where: { userId: req.user.userId } })
     const userData = {
       firstName: user.firstName,
       lastName: user.lastName,
@@ -73,7 +73,7 @@ export const getUser = [
   auth,
   async (req, res) => {
     try {
-      const user = await User.findOne({ where: { userId: req.user.user_id } })
+      const user = await User.findOne({ where: { userId: req.user.userId } })
       const userData = {
         firstName: user.firstName,
         lastName: user.lastName,
