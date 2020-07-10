@@ -91,9 +91,12 @@ export const getUsers = [
   auth,
   async (req, res) => {
     try {
-      const i = Number(req.query.page) * 10
-      if (isNaN(i)) return apiResponse.ErrorResponse(res, 'Bad page input')
+      const i = (Number(req.query.page) - 1) * 10
+      if (isNaN(i) || i < 0) return apiResponse.ErrorResponse(res, 'Bad page query input')
       const users = await User.findAll({ offset: i, limit: 10 })
+      users.forEach(element => {
+        delete element.dataValues.hash
+      })
       console.log(users)
       return apiResponse.successResponseWithData(res, 'Users found successfully, page ' + req.query.page, users)
     } catch (err) {
