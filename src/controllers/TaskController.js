@@ -222,7 +222,7 @@ export const getSortedTasksByUsers = [
       const tasks = await Task.findAll({ order: [['userId', req.body.sort]] })
       return apiResponse.successResponseWithData(res, 'Tasks sorted by user registration date in ' + req.body.sort + ' order', tasks)
     } catch (err) {
-
+      return apiResponse.ErrorResponse(res, err)
     }
   }
 ]
